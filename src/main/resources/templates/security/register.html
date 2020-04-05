@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+
+<body>
+<!---->
+<div>
+    register
+</div>
+<!---->
+<div class="container">
+    <form action="/register/save" th:object="${userAccount}" method="POST">
+        <input type="text" placeholder="User Name" th:field="*{userName}">
+        <input type="text" placeholder="Email" th:field="*{email}">
+        <input type="text" placeholder="Password" th:field="*{password}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+        <button type="submit">register</button>
+    </form>
+</div>
+<!---->
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>User Name </th>
+                <th>Email</th>
+                <th>role</th>
+                <th>Email</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each ="user: ${users}">
+                <td th:text="${user.userName}"/>
+                <td th:text="${user.email}"/>
+                <td th:text="${user.password}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>
